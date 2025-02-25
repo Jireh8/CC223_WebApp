@@ -4,14 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const popupList = document.getElementById("popup-list");
     const closeBtn = document.querySelector(".close");
 
-    // Fallback data in case the backend is unavailable
-    const defaultInstruments = {
-        "Strings": ["Violin", "Viola", "Cello", "Double Bass", "Harp"],
-        "Brass": ["Trumpet", "Trombone", "French Horn", "Tuba"],
-        "More": ["Piano", "Flute", "Clarinet", "Oboe"]
-    };
-
-    let instrumentsData = {}; // Store fetched data
+    let instrumentsData = {}; 
 
     // Fetch instruments from backend
     fetch("http://localhost:5000/api/instruments")
@@ -27,8 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => {
             console.error("Error fetching data:", error);
-            console.log("Using fallback instruments.");
-            instrumentsData = defaultInstruments; // Use fallback data if backend fails
         });
 
     document.querySelectorAll(".btn").forEach(button => {
